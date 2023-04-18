@@ -49,7 +49,7 @@ function ToDoList() {
       <div className="main mt-5 ">
         <div className=" main-container bg-indigo">
           <div className="main-top-section p-3 text-light text-center ">
-          <h4>Sunday, 17th</h4>
+          <h4>Sunday, 18th</h4>
           <p>April,</p>
           {
             list.length ?
