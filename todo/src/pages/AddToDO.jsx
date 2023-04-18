@@ -11,7 +11,7 @@ const AddToDo = () => {
   const [taskCompleted,setTaskCompleted] = useState()
   function add(e){
       e.preventDefault();
-      const BASE_URL = "http://127.0.0.1:8000/api/"
+      const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
       const ENDPOINT = "tasks/"
       axios.post(BASE_URL+ENDPOINT,{title:taskTitle,completed:taskCompleted}).then((response)=>{
         console.log(response.data);

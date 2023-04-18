@@ -16,7 +16,7 @@ function ToDoList() {
     console.log("jwn"+doneValue.length);
   }
   function fetchTasks(){
-        const BASE_URL = "http://127.0.0.1:8000/api/"
+        const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
         const ENDPOINT = "tasks/"
           axios.get(BASE_URL+ENDPOINT).then(response=>{
             console.log("fetch task",response.data);
@@ -29,14 +29,14 @@ function ToDoList() {
   },[done]);
   const changeHandler=(item)=>{
       const updateItem = {completed:!item.completed}
-      const BASE_URL = "http://127.0.0.1:8000/api/"
+      const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
       const ENDPOINT = `tasks/${item.id}/`
       axios.patch(BASE_URL+ENDPOINT,updateItem).then((response)=>{
         fetchTasks();
       });
   }
   const deleteHandler=(item)=>{
-    const BASE_URL = "http://127.0.0.1:8000/api/"
+    const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
     const ENDPOINT = `tasks/${item.id}/`
       axios.delete(BASE_URL+ENDPOINT).then((response)=>{
         console.log(response)
