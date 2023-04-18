@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$8&qzl&q)ve4r#5$v#nc@np4iz0o$779$x5q$za=n*z@f^m#y2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://apitodo.pythonanywhere.com/']
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
