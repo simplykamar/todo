@@ -7,19 +7,23 @@ import {Link} from 'react-router-dom';
 function ToDoList() {
   const [list,setList]=useState([]);
   const [done,setDone]=useState(null);
+  const today = new Date();
+  const date = today.getDate();
+  const day = today.getDay();
+  const month = today.getMonth();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
   function setDoneValue(){
     const doneValue = list.filter((item)=>{
       return item.completed
     })
     setDone(doneValue.length);
-    console.log("jwn"+doneValue.length);
   }
   function fetchTasks(){
         const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
         const ENDPOINT = "tasks/"
           axios.get(BASE_URL+ENDPOINT).then(response=>{
-            console.log("fetch task",response.data);
             setList(response.data);
             setDoneValue();
           })
@@ -27,6 +31,8 @@ function ToDoList() {
   useEffect(()=>{
     fetchTasks()
   },[done]);
+
+ 
   const changeHandler=(item)=>{
       const updateItem = {completed:!item.completed}
       const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
@@ -39,8 +45,8 @@ function ToDoList() {
     const BASE_URL = "https://apitodo.pythonanywhere.com/api/"
     const ENDPOINT = `tasks/${item.id}/`
       axios.delete(BASE_URL+ENDPOINT).then((response)=>{
-        console.log(response)
-        fetchTasks()
+        console.log(response);
+        fetchTasks();
       });
   }
 
@@ -49,8 +55,8 @@ function ToDoList() {
       <div className="main mt-5 ">
         <div className=" main-container bg-indigo">
           <div className="main-top-section p-3 text-light text-center ">
-          <h4>Sunday, 18th</h4>
-          <p>April,</p>
+          <h4>{days[day]}, {date}th</h4>
+          <p>{months[month]},</p>
           {
             list.length ?
           <div className="content d-flex justify-content-between">
